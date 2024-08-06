@@ -96,14 +96,9 @@ const Register = () => {
             </div>
           </div>
         </form>
-        <div className='mt-3 text-center'>
+        <div className='my-3 text-center'>
           <Link className='font-semibold text-sm' href='/login'>
             Already Signed Up? Login
-          </Link>
-          <Link href='/'>
-            <p className='my-2 font-semibold text-sm'>
-              Continue Without Registering
-            </p>
           </Link>
         </div>
       </div>

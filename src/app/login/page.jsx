@@ -34,8 +34,8 @@ const page = () => {
   };
   console.log(data);
   return (
-    <div className='flex flex-col justify-center items-center w-full h-[100vh]'>
-      <h1 className='py-2 font-bold text-4xl capitalize'>Login</h1>
+    <div className='flex flex-col justify-center items-center w-full h-[100vh] overflow-y-hidden'>
+      <h1 className='my-2 py-2 font-bold text-4xl capitalize'>Login</h1>
       <div className='rounded-xl w-[20rem] lg:w-[25rem] boxShadow'>
         <form className='py-5 w-full'>
           <div className='flex flex-col gap-2'>
@@ -74,14 +74,9 @@ const page = () => {
             </div>
           </div>
         </form>
-        <div className='mt-3 text-center'>
+        <div className='my-3 text-center'>
           <Link className='font-semibold text-sm' href='/register'>
             Don't have an account? Register
-          </Link>
-          <Link href='/'>
-            <p className='my-2 font-semibold text-sm'>
-              Continue Without Registering
-            </p>
           </Link>
         </div>
       </div>
