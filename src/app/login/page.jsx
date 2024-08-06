@@ -12,11 +12,20 @@ const page = () => {
   const onValueChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const onLogin = (e) => {
-    e.preventDefault();
+  const onLogin = async (e) => {
     if (!data.email || !data.password) {
       alert("please fill all fields");
       return;
+    }
+    try {
+      const response = await axios.post("api/users/login", data);
+      setData(defaultData);
+
+      if (response.status === 200) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   console.log(data);

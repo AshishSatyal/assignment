@@ -3,20 +3,34 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Input from "../component/Input";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const defaultData = { fullname: "", email: "", password: "" };
 
-const page = () => {
+const Register = () => {
   const [data, setData] = useState(defaultData);
+
+  const router = useRouter();
 
   const onValueChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const onRegister = (e) => {
+  const onRegister = async (e) => {
     e.preventDefault();
     if (!data.fullname || !data.email || !data.password) {
       alert("please fill all fields");
       return;
+    }
+    try {
+      const response = await axios.post("api/users/register", data);
+      setData(defaultData);
+
+      if (response.status === 200) {
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   console.log(data);
@@ -97,4 +111,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Register;
