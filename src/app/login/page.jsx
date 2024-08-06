@@ -3,16 +3,20 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Input from "../component/Input";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const defaultData = { email: "", password: "" };
 
 const page = () => {
+  const router = useRouter();
   const [data, setData] = useState(defaultData);
 
   const onValueChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   const onLogin = async (e) => {
+    e.preventDefault();
     if (!data.email || !data.password) {
       alert("please fill all fields");
       return;

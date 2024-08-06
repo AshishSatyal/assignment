@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 import Connection from "@/database/config";
 import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
+// import { useRouter } from "next/navigation";
 
 Connection();
 
@@ -20,7 +21,7 @@ export const POST = async (NextRequest) => {
     }
     const user = await User.findOne({ email });
 
-    if (user) {
+    if (!user) {
       return new Response("email doesnot exist", { status: 400 });
     }
     const validPassword = await bcryptjs.compare(password, user.password);
@@ -38,7 +39,9 @@ export const POST = async (NextRequest) => {
     });
 
     const response = NextResponse.json({ message: "login succesfull" });
+
     response.cookies.set("token", token, { httpOnly: true });
+    return response;
   } catch (error) {
     console.log(error);
     return new Response("something went wrong", { status: 500 });
