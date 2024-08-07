@@ -24,17 +24,17 @@ const Header = () => {
 
         <div className='flex gap-5'>
           <Link
+            href='/addproduct'
+            className='flex justify-center items-center border border-blue-500 hover:border-none rounded-xl w-24 md:w-36 h-10 md:h-14 font-semibold text-black text-sm md:text-xl transition-all'
+          >
+            Add product
+          </Link>
+          <Link
             href='/'
             className='flex justify-center items-center border border-blue-500 hover:border-none rounded-xl w-24 md:w-36 h-10 md:h-14 font-semibold text-black text-sm md:text-xl transition-all'
             onClick={(e) => logout(e)}
           >
             Logout
-          </Link>
-          <Link
-            href='/'
-            className='flex justify-center items-center border border-blue-500 hover:border-none rounded-xl w-24 md:w-36 h-10 md:h-14 font-semibold text-black text-sm md:text-xl transition-all'
-          >
-            Add product
           </Link>
         </div>
       </div>

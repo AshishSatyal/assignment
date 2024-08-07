@@ -8,9 +8,10 @@ import { NextResponse } from "next/server";
 Connection();
 
 export const POST = async (NextRequest) => {
+  console.log(process.env.JWT_SECRETKEY);
+
   try {
     const body = await NextRequest.json();
-    // console.log("body", body);
 
     const { email, password } = body;
 
@@ -40,7 +41,11 @@ export const POST = async (NextRequest) => {
 
     const response = NextResponse.json({ message: "login succesfull" });
 
-    response.cookies.set("token", token, { httpOnly: true });
+    response.cookies.set("token", token, {
+      httpOnly: true,
+      sameSite: "strict",
+      path: "/",
+    });
     return response;
   } catch (error) {
     console.log(error);
