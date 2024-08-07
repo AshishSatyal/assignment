@@ -15,7 +15,7 @@
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/AshishSatyal/assignment`
+1. Clone the repository: `git clone https://github.com/AshishSatyal/assignment.git`
 2. Navigate to the project directory: `cd assignment`
 3. Install the node package(node modules) `npm i`
 4. Configure database.
